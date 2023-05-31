@@ -23,3 +23,21 @@ exports.save = async (req, res) => {
         res.send(error);
     }
 }
+
+exports.delete = async (req, res) => {
+    const productId = req.params.id;
+
+    try {
+        const product = await Product.findById(productId); 
+
+        if (!product) {
+            return res.status(404).send("Product not found");
+        }
+
+        // Delete the brand document from the database
+        await product.deleteOne();
+        res.redirect("/products/");
+    } catch (error) {
+        res.send(error);
+    }
+}

@@ -31,7 +31,13 @@
                     <th><%= index + 1 %></th>
                     <td><%= e.name %></td>
                     <td><%= e.slug %></td>
-                    <td><%= e.icon %></td>
+                    <td>
+                      <% if (e.icon) { %>
+                        <img src="/uploads/<%= e.icon %>" class="img-thumbnail" alt="<%= e.icon %>">
+                      <% } else { %>
+                        N/A
+                      <% } %>
+                    </td>
                     <td>
                       <button class="btn btn-primary">Edit</button>
                     </td> 
