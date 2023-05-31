@@ -9,6 +9,8 @@ app.listen(PORT, () => {
 
 app.set("view engine", "ejs");
 app.use(express.static("public")); // Chỉ được quyền truy cập các file trong thư mục public
+app.use(express.json());
+app.use(express.urlencoded({extended:true}));
 
 
 app.get("/", (req, res) => {
@@ -30,5 +32,17 @@ app.get("/detail", (req, res) => {
     res.send('Detail')
 })
 
+// CRUD for products
+const productRoutes = require("./src/routes/product.route");
+app.use("/products", productRoutes);
 
-//This is code for feature-1 branch
+// CRUD for categories
+const categoryRoutes = require("./src/routes/category.route");
+app.use("/categories", categoryRoutes);
+
+// CRUD for brands
+const brandRoutes = require("./src/routes/brand.route");
+app.use("/brands", brandRoutes);
+
+
+
