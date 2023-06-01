@@ -27,24 +27,16 @@
               </tr>
             </thead>
             <tbody>
-                <!-- <% for(let i = 0; i < products.length; i++) { %>
-                    <tr>
-                        <th><%= i+1 %></th>
-                        <td><%= products[i].name %></td>
-                        <td><%= products[i].price %></td>
-                        <td><%= products[i].quantity %></td>
-                        <td><%= products[i].brand %></td>
-                      </tr>
-                <% } %> -->
-                <% products.forEach(e => { %>
+                <% products.forEach((e, index) => { %>
                   <tr>
-                    <th><%= e._id %></th>
+                    <th><%= index + 1 %></th>
                     <td><%= e.name %></td>
                     <td><%= e.price %></td>
                     <td><%= e.quantity %></td>
                     <td><%= e.brand %></td>
                     <td>
                       <button class="btn btn-primary">Edit</button>
+                      <a href="/products/delete/<%= e._id %>" class="btn btn-danger">Delete</button>
                     </td> 
                   </tr>
                 <% }) %>

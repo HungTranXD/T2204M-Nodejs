@@ -15,14 +15,14 @@
       <div class="row justify-content-center">
         <div class="col-6">
           <h2>Add new brand:</h2>
-        <form action="/brands/create" method="post">
+        <form action="/brands/create" method="post" enctype="multipart/form-data">
           <div class="mb-3">
             <label class="form-label">Name</label>
             <input type="text" name="name" class="form-control">
-          </div>
+          </div>  
           <div class="mb-3">
             <label class="form-label">Icon</label>
-            <input type="text" name="icon" class="form-control">
+            <input type="file" name="icon" class="form-control">
           </div>
           <button type="submit" class="btn btn-primary">Submit</button>
         </form>
