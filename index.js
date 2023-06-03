@@ -13,17 +13,22 @@ app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 
 
-// Buoi 3: Luu user vao session
+// Buoi 4 - Session:
 const session = require('express-session');
 app.use(session({
-  secret: 'your-secret-key', // Add a secret key to sign the session ID cookie
-  resave: false,
-  saveUninitialized: false
+  secret: 't2204m', // Add a secret key to sign the session ID cookie
+  resave: true,
+  saveUninitialized: true,
+  cookie: {
+    maxAge: 3600000, //miliseconds
+    //secure: true // lam local thi bat, online thi tat
+  }
 }));
+
 // Set up a middleware to fetch `user` from the session
 app.use((req, res, next) => {
     // Fetch `user` from the session and make it available globally
-    res.locals.user = req.session.user;
+    res.locals.auth = req.session.auth;
     next();
   });
 
