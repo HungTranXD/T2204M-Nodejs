@@ -36,7 +36,14 @@
                     <td><%= e.brand %></td>
                     <td>
                       <button class="btn btn-primary">Edit</button>
-                      <a href="/products/delete/<%= e._id %>" class="btn btn-danger">Delete</button>
+                      <a href="/products/delete/<%= e._id %>" class="btn btn-danger">Delete</a>
+
+                      <form action="/products/add-to-cart" method="post">
+                        <input type="hidden" name="product_id" value="<%= e._id %>">
+                        <input type="number" name="quantity" value="1" min="1" max="<%= e.quantity %>">
+                        <button type="submit" class="btn btn-success">Add to Cart</button>
+                      </form>
+                      
                     </td> 
                   </tr>
                 <% }) %>
