@@ -27,31 +27,43 @@
             </thead>
             <tbody>
                 <% if(cart) { %> 
-                    <% cart.forEach((e, index) => { %>
-                    <tr>
-                        <th><%= index + 1 %></th>
-                        <td><%= e.name %></td>
-                        <td><%= e.price %></td>
-                        <td><%= e.buyQuantity %></td>
-                        <td><%= e.brand %></td>
-                        <td>
-                        <a href="/products/delete/<%= e._id %>" class="btn btn-danger">Remove</a>
+                  <% cart.forEach((e, index) => { %>
+                  <tr>
+                      <th><%= index + 1 %></th>
+                      <td><%= e.name %></td>
+                      <td><%= e.price %></td>
+                      <td>
+                        <%= e.buyQuantity %>
+                        <% if(e.buyQuantity > e.quantity) { %> 
+                          <small class="text-danger">(Not enough products left)</small>
+                        <% } %>
+                      </td>
+                      <td><%= e.brand %></td>
+                      <td>
+                      <a href="/products/delete/<%= e._id %>" class="btn btn-danger">Remove</a>
 
-                        <!-- <form action="/products/add-to-cart" method="post">
-                            <input type="hidden" name="product_id" value="<%= e._id %>">
-                            <input type="number" name="quantity" value="1" min="1" max="<%= e.quantity %>">
-                            <button type="submit" class="btn btn-success">Remove</button>
-                        </form> -->
-                        
-                        </td> 
-                    </tr>
-                    <% }) %>
+                      <!-- <form action="/products/add-to-cart" method="post">
+                          <input type="hidden" name="product_id" value="<%= e._id %>">
+                          <input type="number" name="quantity" value="1" min="1" max="<%= e.quantity %>">
+                          <button type="submit" class="btn btn-success">Remove</button>
+                      </form> -->
+                      
+                      </td> 
+                  </tr>
+                  <% }) %>
+                <% } else { %>
+                  <tr>
+                    <td colspan="6" class="text-center">No products in cart</td>
+                  </tr>
                 <% } %>
             </tbody>
           </table>
           <a href="/products/clear-cart">Clear cart</a>
           <div class="d-flex justify-content-end">
-            <a href="/products/checkout" class="btn btn-success">Check out</a>
+            <div><strong>Total:</strong> <%= total %></div>
+            <% if(cart && can_checkout) { %> 
+              <a href="/products/checkout" class="btn btn-success">Check out</a>
+            <% } %>
           </div>
     </div>
   </section>

@@ -40,7 +40,7 @@
 
                       <form action="/products/add-to-cart" method="post">
                         <input type="hidden" name="product_id" value="<%= e._id %>">
-                        <input type="number" name="quantity" value="1" min="1" max="<%= e.quantity %>">
+                        <input type="number" name="quantity" value="1" min="1" max="<%= e.quantity %>" required>
                         <button type="submit" class="btn btn-success">Add to Cart</button>
                       </form>
                       
