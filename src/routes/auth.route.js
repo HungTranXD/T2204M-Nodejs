@@ -16,5 +16,13 @@ router.post("/change-password", controller.changePasswordSave);
 
 router.get("/logout", controller.logout)
 
+
+router.get("/forgot-password", controller.forgot_pw_form)
+router.post("/forgot-password", controller.forgot)
+
+router.get("/reset-password", controller.reset_pw_form)
+router.post("/reset-password", controller.reset)
+
+
 module.exports = router;
 
