@@ -47,6 +47,9 @@ app.get("/shop", (req, res) => {
 app.get("/detail", (req, res) => {
     res.send('Detail')
 })
+app.get('/ab?cd', (req, res) => {
+    res.send('ab?cd')
+  })
 
 // CRUD for products
 const productRoutes = require("./src/routes/product.route");
